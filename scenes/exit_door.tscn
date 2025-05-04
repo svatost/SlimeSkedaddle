@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://dg2sb2dno6kti"]
+
+[ext_resource type="Texture2D" uid="uid://dt68why7ncpue" path="res://assets/sprites/KeyDoor.png" id="1_syxuu"]
+[ext_resource type="Script" uid="uid://cwhfev1kipydc" path="res://scripts/exit_door.gd" id="1_yk4m6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk4m6"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxrmt"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m21m"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sojrm"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn25g"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvv6m"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne0bh"]
+atlas = ExtResource("1_syxuu")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jg4yw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk4m6")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxrmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m21m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sojrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn25g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvv6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne0bh")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syxuu"]
+size = Vector2(14, 11)
+
+[node name="ExitDoor" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_yk4m6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_jg4yw")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_syxuu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
