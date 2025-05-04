@@ -8,4 +8,5 @@ Luckily enough, since I own a Mac and have been through this ringer many times b
 ### Simpliest Way (recommended):
 1. Download the .dmg file.
 2. Right-click the file and click 'Open', and then 'Open' again on the popup.
-3. Viola! Hopefully you'll be able to run the game!
+3. Enter your password if needed.
+4. Viola! Hopefully you'll be able to run the game!
